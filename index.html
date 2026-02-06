@@ -52,8 +52,78 @@
                 0 30px 90px rgba(0, 0, 0, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.8);
             max-width: 550px;
+            width: 90%;
             animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1);
             border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .question-box {
+                padding: 40px 30px;
+                width: 95%;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .question {
+                font-size: 1.2em;
+            }
+
+            .celebration h2 {
+                font-size: 2.5em;
+            }
+
+            .celebration p {
+                font-size: 1.2em;
+            }
+
+            button {
+                padding: 15px 35px;
+                font-size: 1.1em;
+            }
+
+            .buttons {
+                flex-direction: column;
+                height: auto;
+                gap: 15px;
+            }
+
+            .no-btn {
+                position: relative;
+                left: 0;
+                transform: none;
+            }
+
+            .celebration img {
+                width: 150px !important;
+                height: 150px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .question-box {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .question {
+                font-size: 1.1em;
+            }
+
+            .celebration h2 {
+                font-size: 2em;
+            }
+
+            button {
+                padding: 12px 30px;
+                font-size: 1em;
+            }
         }
 
         @keyframes fadeIn {
@@ -87,7 +157,7 @@
 
         .buttons {
             display: flex;
-            gap: 25px;
+            gap: 60px;
             justify-content: center;
             margin-top: 50px;
             position: relative;
@@ -146,10 +216,6 @@
         .no-btn {
             background: linear-gradient(135deg, #9e9e9e 0%, #757575 100%);
             color: white;
-            position: absolute;
-            left: calc(50% + 100px);
-            transform: translateX(0);
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         .celebration {
@@ -362,12 +428,10 @@
                 
                 <!-- Kiss GIF -->
                 <div style="margin: 30px 0;">
-                    <img 
-                      src="kiss-lip-kiss.gif"
-                      alt="Kiss"
-                      style="width: 200px; height: 200px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                  </div>
-                  
+                    <img src="https://media.tenor.com/gq-N98ULao4AAAAC/kiss-lip-kiss.gif" 
+                         alt="Kiss" 
+                         style="width: 200px; height: 200px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                </div>
                 
                 <p>
                     Distance means so little when someone means so much.<br>
@@ -387,14 +451,21 @@
     <script>
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
-            const maxX = 250;
-            const maxY = 180;
             
-            const randomX = (Math.random() - 0.5) * maxX;
-            const randomY = (Math.random() - 0.5) * maxY;
+            // Check if mobile
+            const isMobile = window.innerWidth <= 768;
             
-            noBtn.style.left = `calc(50% + 100px + ${randomX}px)`;
-            noBtn.style.top = `${randomY}px`;
+            if (isMobile) {
+                // On mobile, move to random position
+                noBtn.style.position = 'fixed';
+                noBtn.style.left = Math.random() * 80 + '%';
+                noBtn.style.top = Math.random() * 80 + '%';
+            } else {
+                // Desktop - move to random position
+                noBtn.style.position = 'fixed';
+                noBtn.style.left = Math.random() * 90 + '%';
+                noBtn.style.top = Math.random() * 90 + '%';
+            }
         }
 
         function sayYes() {
