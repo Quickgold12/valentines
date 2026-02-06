@@ -422,9 +422,9 @@
 <body>
     <div class="container">
         <div class="question-box" id="questionBox">
-            <h1>💕 My HoneyBunBun 💕</h1>
+            <h1>💕 My Dearest Love 💕</h1>
             <p class="question">
-                Even though miles separate us, you're always in my heart.XD<br>
+                Even though miles separate us, you're always in my heart.<br>
                 Will you be my Valentine?
             </p>
             <div class="buttons">
@@ -435,7 +435,7 @@
 
         <div class="celebration" id="celebration">
             <div class="question-box">
-                <h2>I Love You, Baby!</h2>
+                <h2>You've Made Me the Happiest!</h2>
                 
                 <!-- Kiss GIF -->
                 <div style="margin: 30px 0;">
@@ -446,7 +446,7 @@
                 
                 <p>
                     Distance means so little when someone means so much.<br>
-                    You are my Chloe, my Baby, and all my Heart.
+                    You are my sunshine, my moon, and all my stars.
                 </p>
                 <p style="font-weight: 600; color: #8b2e5f; font-size: 1.5em; margin-top: 20px;">
                     Happy Valentine's Day, my love! ❤️
@@ -502,10 +502,10 @@
         }
 
         function createFloatingFlowers() {
-            const flowers = ['🌹', '🌺', '🌸', '🌼', '🌷', '💐', '🥀'];
+            const flowers = ['🌹', '🌺', '🌸', '🌼', '🌷', '💐', '🏵️', '💮'];
             
-            // Create flowers that fall from top
-            for (let i = 0; i < 25; i++) {
+            // Create flowers that fall from top - INCREASED from 25 to 50
+            for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
                     const flower = document.createElement('div');
                     flower.className = 'falling-flower';
@@ -520,27 +520,43 @@
                     setTimeout(() => {
                         flower.remove();
                     }, 8000);
-                }, i * 150);
+                }, i * 100); // Reduced delay for more frequent flowers
             }
             
-            // Create some that stay floating around the edges
-            for (let i = 0; i < 8; i++) {
+            // Create some that stay floating around the edges - INCREASED from 8 to 16
+            for (let i = 0; i < 16; i++) {
                 const flower = document.createElement('div');
                 flower.className = 'static-flower';
                 flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
                 
                 // Position around the edges
-                if (i < 4) {
+                if (i < 8) {
                     flower.style.left = (5 + Math.random() * 15) + '%';
                 } else {
                     flower.style.left = (80 + Math.random() * 15) + '%';
                 }
-                flower.style.top = (20 + Math.random() * 60) + '%';
+                flower.style.top = (10 + Math.random() * 80) + '%';
                 flower.style.fontSize = (2 + Math.random() * 1.5) + 'em';
                 flower.style.animationDelay = Math.random() * 2 + 's';
                 
                 document.body.appendChild(flower);
             }
+            
+            // Add continuous flower rain
+            setInterval(() => {
+                const flower = document.createElement('div');
+                flower.className = 'falling-flower';
+                flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+                flower.style.left = Math.random() * 100 + '%';
+                flower.style.fontSize = (2 + Math.random() * 2) + 'em';
+                flower.style.animationDuration = (4 + Math.random() * 3) + 's';
+                
+                document.body.appendChild(flower);
+                
+                setTimeout(() => {
+                    flower.remove();
+                }, 8000);
+            }, 500); // New flower every 500ms
         }
 
         function createHearts() {
